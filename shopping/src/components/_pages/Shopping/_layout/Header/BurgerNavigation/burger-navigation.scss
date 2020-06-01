@@ -1,0 +1,90 @@
+@import "../../../../../../styles/scss/partials/mixins";
+
+//burger
+.burger {
+  cursor: pointer;
+
+  > div {
+    width: 25px;
+    height: 2px;
+    background: $font-color;
+    margin: 5px;
+    transition: all 0.5s ease;
+  }
+}
+
+//navigation
+
+.nav {
+  &-links {
+    display: flex;
+    list-style: none;
+    width: 0px;
+    position: absolute;
+    left: 0;
+    top: 72px;
+    height: calc(100vh - 72px);
+    flex-direction: column;
+    background-color: $header-bg;
+    z-index: -1;
+    box-shadow: 2px 0px 4px 0px rgba(0, 0, 0, 0.08);
+    transition: all 0.5s ease-in;
+    :last-child {
+      margin-bottom: 0;
+    }
+  }
+  &-item {
+    opacity: 0;
+    margin-bottom: 30px;
+
+    a {
+      text-decoration: none;
+      display: block;
+      color: $font-color;
+      height: 70px;
+      letter-spacing: 3px;
+      font-family: Arial, Helvetica, sans-serif;
+      text-transform: uppercase;
+    }
+  }
+  &-active {
+    width: 240px;
+    left: 0;
+    padding: 2% 0 0 2%;
+    @media (max-width: 1024px) {
+      padding: 5% 0 0 5%;
+    }
+  }
+}
+
+@keyframes navLinkanimate {
+  from {
+    opacity: 0;
+    transform: translateX(50%);
+  }
+  to {
+    opacity: 1;
+    transform: translateX(0%);
+  }
+}
+.toggle .line1 {
+  transform: rotate(-45deg) translate(-5px, 6px);
+}
+.toggle .line2 {
+  opacity: 0;
+}
+.toggle .line3 {
+  transform: rotate(45deg) translate(-4px, -5px);
+}
+
+@media (max-width: 425px) {
+  .nav-links {
+    height: 270px;
+    align-items: center;
+    justify-content: center;
+    padding-top: 50px;
+  }
+  .nav-active {
+    width: 100%;
+  }
+}
